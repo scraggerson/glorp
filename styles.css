@@ -1,0 +1,44 @@
+table {
+    border-collapse: collapse;
+    font-family: monospace;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    table-layout: fixed;
+    overflow-x: hidden;
+    height: auto;
+  }
+  
+  th,
+  td {
+    border: 1px solid rgb(0, 71, 163);
+    padding: 8px 10px;
+    color: aliceblue;
+    height: auto;
+    text-align: center;
+    white-space: nowrap;
+    word-wrap: break-word;
+  }
+  
+  tr {
+      background: rgba(0, 0, 0, 0.363);
+      height: auto;
+      width: 50vw;
+  }
+
+  .centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+}
+h1 {
+    color: #d8d8d8;
+    font-size: large;
+}
+a:visited {
+    color: #d8d8d8;
+}
